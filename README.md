@@ -24,7 +24,8 @@ go install github.com/soroauth/soroauth-go/cmd/soroauth@latest
 ```
 
 Requires Go 1.25.0 or later, and `github.com/stellar/go-stellar-sdk` v0.7.3 or
-later.
+later. Which SDK versions that promise covers, and how the pin moves, is
+stated in [docs/sdk-support.md](docs/sdk-support.md).
 
 ## Common tasks
 
@@ -270,7 +271,7 @@ GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -ldflags="-s -w" -o soroauth-arm6
 `soroauth completions --shell bash|zsh|fish` prints a completion script for
 that shell on stdout. The scripts complete the subcommands, each subcommand's
 flags, and the enumerable flag values (`--shell`, `--format`, `--network`'s
-two named shorthands); fish additionally shows each flag's description in the
+three named shorthands); fish additionally shows each flag's description in the
 tab menu. `--secret-env` is completed by name only — the shells never see or
 complete a variable's value.
 

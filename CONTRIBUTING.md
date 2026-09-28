@@ -14,6 +14,9 @@ go test ./...
 
 That is the whole setup for the library and CLI. Go 1.25.0 or later.
 
+The pinned `github.com/stellar/go-stellar-sdk` version and the policy for
+moving it live in [docs/sdk-support.md](docs/sdk-support.md).
+
 Two optional pieces need more:
 
 - **Regenerating golden vectors** needs Node (>= 22.12.0, what

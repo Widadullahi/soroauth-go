@@ -159,16 +159,18 @@ func runWithStdin(args []string, stdout, stderr io.Writer, getenv func(string) s
 	}
 }
 
-// resolveNetwork turns the --network flag into a passphrase. The two named
+// resolveNetwork turns the --network flag into a passphrase. The three named
 // networks are shorthands; anything else is taken as a literal passphrase, so
-// futurenet, a standalone network or a quickstart container all work without
+// a standalone network or a quickstart container all work without
 // this tool needing to know about them.
 func resolveNetwork(value string) (string, error) {
 	switch value {
 	case "":
-		return "", newErrorf(ExitUsageError, "--network is required (testnet, public, or a literal passphrase)")
+		return "", newErrorf(ExitUsageError, "--network is required (testnet, futurenet, public, or a literal passphrase)")
 	case "testnet":
 		return network.TestNetworkPassphrase, nil
+	case "futurenet":
+		return network.FutureNetworkPassphrase, nil
 	case "public":
 		return network.PublicNetworkPassphrase, nil
 	default:
@@ -370,7 +372,7 @@ Interactive TUI for inspecting and signing an authorization entry.
 flags:
   --entry        base64-encoded authorization entry (required)
   --valid-until  signature expiration ledger (required)
-  --network      network passphrase: testnet, public, or literal (required)
+  --network      network passphrase: testnet, futurenet, public, or literal (required)
   --secret-env   name of environment variable holding the secret seed (required)
   --for          target address to sign for (optional, defaults to signer's address)
 
